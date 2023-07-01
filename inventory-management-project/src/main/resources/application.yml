@@ -1,0 +1,17 @@
+# Spring where to get the data from
+spring:
+  datasource:        
+      url: jdbc:postgresql://localhost:5432/movies
+      username: postgres
+      password: password   
+  output:
+        ansi:
+            enabled: ALWAYS
+server:
+    port: 8282                              # changes port number for server
+
+# sets your logging level - default is INFO
+logging:
+    level:
+        com:
+            skillstorm: debug               # sets the logging level for the entire package
