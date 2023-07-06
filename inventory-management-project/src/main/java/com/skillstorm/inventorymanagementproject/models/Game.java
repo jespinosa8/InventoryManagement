@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name = "games")
 public class Game {
   
   @Id

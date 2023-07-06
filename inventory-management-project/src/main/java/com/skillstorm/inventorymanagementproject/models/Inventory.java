@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.*;
 
@@ -12,23 +14,21 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "warehouses")
-public class Warehouse {
+@Table(name = "inventory")
+public class Inventory {
   
   @Id
   @Column
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(name = "location")
-  private String location;  
+  @ManyToOne
+  @JoinColumn(name = "warehouse_id")
+  private Warehouse warehouse;
 
-  @Column(name = "max_capacity")
-  private int capacity;  
+  @ManyToOne
+  @JoinColumn(name = "game_id")
+  private Game game;
 
-  public Warehouse(String location, int capacity) {
-    this.location = location;
-    this.capacity = capacity;
-  }  
-  
+  private int quantity;
 }
