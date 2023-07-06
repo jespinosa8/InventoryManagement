@@ -5,22 +5,24 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
-import com.skillstorm.inventorymanagementproject.models.Game;
 import com.skillstorm.inventorymanagementproject.models.Warehouse;
-import com.skillstorm.inventorymanagementproject.repositories.GameRepository;
 import com.skillstorm.inventorymanagementproject.repositories.WarehouseRepository;
 
+@Service
 public class WarehouseService {
   @Autowired
   WarehouseRepository warehouseRepository;
 
-  public List<Warehouse> findAllwarehouses() {
-    Sort sort = Sort.by(Sort.Direction.ASC, "name");    // sorts warehouses in alphabetical order
+  public List<Warehouse> findAllWarehouses() {
+
+    Sort sort = Sort.by(Sort.Direction.ASC, "id");    // sorts warehouses by id
+
     return warehouseRepository.findAll(sort);     // calls the findAll() in JpaRepository
   }
 
-  public Warehouse findwarehouseById(int id) {
+  public Warehouse findWarehouseById(int id) {
 
     Optional<Warehouse> warehouse = warehouseRepository.findById(id);
 

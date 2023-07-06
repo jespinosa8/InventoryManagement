@@ -1,9 +1,8 @@
 package com.skillstorm.inventorymanagementproject.models;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,20 +14,18 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "inventory")
-public class Inventory {
+public class Inventory { 
   
   @Id
-  @Column
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
-
   @ManyToOne
-  @JoinColumn(name = "warehouse_id")
+  @JoinColumn(name = "warehouse_id")    // indicating warehouse FK
   private Warehouse warehouse;
 
+  @Id
   @ManyToOne
-  @JoinColumn(name = "game_id")
+  @JoinColumn(name = "game_id")         // indicating game FK
   private Game game;
 
+  @Column
   private int quantity;
 }
