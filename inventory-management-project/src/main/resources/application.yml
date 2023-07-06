@@ -1,7 +1,7 @@
 # Spring where to get the data from
 spring:
   datasource:        
-      url: jdbc:postgresql://localhost:5432/movies
+      url: jdbc:postgresql://localhost:5432/gamevault
       username: postgres
       password: root   
   output:
