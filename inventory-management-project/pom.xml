@@ -46,6 +46,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- lombok for automatic boilerplate generation -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>			
+		</dependency>
 
 		<!-- Database connector for PostgreSQL -->
 		<dependency>
