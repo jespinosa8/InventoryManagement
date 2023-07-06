@@ -66,6 +66,12 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
+		<!-- For Lombok (automatically generate boilerplate) -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>			
+		</dependency>
+
 	</dependencies>
 
 	<build>

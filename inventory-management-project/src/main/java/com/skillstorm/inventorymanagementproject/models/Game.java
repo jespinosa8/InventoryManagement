@@ -7,32 +7,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.*;
-import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table
-public class Warehouse {
+public class Game {
   
   @Id
   @Column
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(name = "location")
-  private String location;  
+  @Column(name = "name")
+  private String name;
 
-  @Column(name = "max_capacity")
-  private int capacity;  
+  @Column(name = "description")
+  private String description;
 
-  public Warehouse(String location, int capacity) {
-    this.location = location;
-    this.capacity = capacity;
-  }  
+  @Column(name = "developer")
+  private String developer;
+
+  public Game(String name, String description, String developer) {
+    this.name = name;
+    this.description = description;
+    this.developer = developer;
+  }   
   
 }
