@@ -8,17 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "games")
-public class Game {
+@Data public class Game {
   
   @Id
   @Column
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
 
   @Column(name = "name")
   private String name;
@@ -27,12 +25,6 @@ public class Game {
   private String description;
 
   @Column(name = "developer")
-  private String developer;
-
-  public Game(String name, String description, String developer) {
-    this.name = name;
-    this.description = description;
-    this.developer = developer;
-  }   
+  private String developer;  
   
 }

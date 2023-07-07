@@ -8,27 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "warehouses")
-public class Warehouse {
+@Data public class Warehouse {
   
   @Id
   @Column
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
 
   @Column(name = "location")
   private String location;  
 
   @Column(name = "max_capacity")
-  private int capacity;  
-
-  public Warehouse(String location, int capacity) {
-    this.location = location;
-    this.capacity = capacity;
-  }  
+  private Integer capacity;   
   
 }
