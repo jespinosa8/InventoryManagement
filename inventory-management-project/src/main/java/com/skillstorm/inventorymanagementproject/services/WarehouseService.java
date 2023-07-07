@@ -34,4 +34,9 @@ public class WarehouseService {
     // otherwise return null
     return null;
   }
+
+  // public int updateWarehouse(Warehouse warehouse, String newLocation) {
+
+  //   return WarehouseRepository.updateWarehouseLocation(warehouse.getId(), newLocation);
+  // }
 }

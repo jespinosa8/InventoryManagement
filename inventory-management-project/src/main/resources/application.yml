@@ -1,4 +1,4 @@
-# Spring where to get the data from
+# Tells Spring where to get the data from
 spring:
   datasource:        
       url: jdbc:postgresql://localhost:5432/gamevault
@@ -6,7 +6,7 @@ spring:
       password: root   
   output:
         ansi:
-            enabled: ALWAYS
+            enabled: ALWAYS                 # color added in terminal output
 server:
     port: 8282                              # changes port number for server
 
