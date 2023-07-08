@@ -2,14 +2,22 @@ package com.skillstorm.inventorymanagementproject.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.inventorymanagementproject.models.Game;
+import com.skillstorm.inventorymanagementproject.models.Warehouse;
 import com.skillstorm.inventorymanagementproject.services.GameService;
 
 @RestController
@@ -32,4 +40,25 @@ public class GameController {
 
     return ResponseEntity.ok(game);
   }
+
+  @PostMapping("/game") 
+  public ResponseEntity<Game> createMovie(@Valid @RequestBody Game game) {
+
+    Game newGame = gameService.saveGame(game);       
+    return new ResponseEntity<Game>(newGame, HttpStatus.CREATED);
+  }
+
+  @PutMapping("/game")
+  public ResponseEntity<Game> updateMovie(@Valid @RequestBody Game game) {
+
+    Game updatedGame = gameService.saveGame(game);       
+    return new ResponseEntity<Game>(updatedGame, HttpStatus.OK);
+  }
+
+  @DeleteMapping("/game") 
+    public ResponseEntity<Game> deleteGame(@RequestBody Game game) {
+      gameService.deleteGame(game);
+
+      return ResponseEntity.noContent().build();
+    }  
 }

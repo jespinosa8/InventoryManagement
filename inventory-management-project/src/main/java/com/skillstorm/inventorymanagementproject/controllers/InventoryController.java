@@ -20,7 +20,7 @@ public class InventoryController {
 
   @GetMapping
   public ResponseEntity<List<Inventory>> getAllInventory() {
-    List<Inventory> inventory = inventoryService.findAllInventory();
+    List<Inventory> inventory = inventoryService.viewInventory();
 
     return ResponseEntity.ok(inventory);
   }

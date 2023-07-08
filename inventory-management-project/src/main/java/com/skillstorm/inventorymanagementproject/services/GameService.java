@@ -33,4 +33,16 @@ public class GameService {
     // otherwise return null
     return null;
   }
+
+  
+  public Game saveGame(Game game) {    
+    return gameRepository.save(game);
+  }
+
+  // method to delete game resource
+  public void deleteGame(Game game) {
+    gameRepository.delete(game);
+  }
+
+
 }

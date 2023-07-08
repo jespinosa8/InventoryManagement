@@ -14,23 +14,13 @@ import com.skillstorm.inventorymanagementproject.repositories.InventoryRepositor
 import com.skillstorm.inventorymanagementproject.repositories.WarehouseRepository;
 
 @Service
-public class InventoryService {
-
-  @Autowired
-  private WarehouseRepository warehouseRepository;
-
-  @Autowired
-  private GameRepository gameRepository;
+public class InventoryService {  
 
   @Autowired
   InventoryRepository inventoryRepository;
 
-  public List<Inventory> findAllInventory() {
+  public List<Inventory> viewInventory() {
     return inventoryRepository.findAll();       // retrieves everything in inventory table in db
   }
-
-  public void addGameToWarehouse(Integer warehouseId, Integer gameId, Integer quantity) {
-    // check if the warehouse exists
-    Optional<Warehouse> warehouse = warehouseRepository.findById(warehouseId);
-  }
+  
 }
