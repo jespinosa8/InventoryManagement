@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
 import lombok.*;
 
 
@@ -19,12 +21,14 @@ import lombok.*;
   private Integer id;
 
   @Column(name = "name")
+  @NotBlank 
   private String name;
 
   @Column(name = "description")
   private String description;
 
   @Column(name = "developer")
+  @NotBlank
   private String developer;  
   
 }

@@ -8,5 +8,5 @@ import com.skillstorm.inventorymanagementproject.models.Warehouse;
 @Repository
 public interface WarehouseRepository extends JpaRepository<Warehouse, Integer>{
   
-  // public int updateWarehouseLocation(@Param(warehouse)
+  // public int updateWarehouseLocation(@Param(warehouse))
 }
