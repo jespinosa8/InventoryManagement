@@ -1,7 +1,9 @@
 package com.skillstorm.inventorymanagementproject.services;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -33,6 +35,17 @@ public class WarehouseService {
 
     // otherwise return null
     return null;
+  }
+
+  // Retrieving Top Warehouses by Capacity
+  public List<Warehouse> getTopWarehouses() {
+    List<Warehouse> warehouses = findAllWarehouses();
+
+    List<Warehouse> topWarehouses = warehouses.stream()
+            .sorted(Comparator.comparing(Warehouse::getCapacity).reversed())
+            .limit(3)
+            .collect(Collectors.toList());
+    return topWarehouses;
   }
 
   public Warehouse saveWarehouse(Warehouse warehouse) {

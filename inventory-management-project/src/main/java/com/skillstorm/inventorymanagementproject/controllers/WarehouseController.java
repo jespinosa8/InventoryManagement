@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.skillstorm.inventorymanagementproject.services.WarehouseService;
 
 @RestController
 @RequestMapping("/warehouses")
+@CrossOrigin("http://127.0.0.1:3001/")
 public class WarehouseController {
 
   @Autowired
@@ -38,6 +40,12 @@ public class WarehouseController {
     Warehouse warehouse = warehouseService.findWarehouseById(id);
 
     return ResponseEntity.ok(warehouse);
+  }
+
+  @GetMapping("/top-warehouses")
+  public List<Warehouse> getTopWarehouses() {    
+
+    return warehouseService.getTopWarehouses();
   }
 
   @PostMapping("/warehouse")

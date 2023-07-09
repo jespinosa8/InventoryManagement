@@ -21,6 +21,7 @@ public class GameService {
     return gameRepository.findAll(sort);     // calls the findAll() in JpaRepository
   }
 
+  // retrieve games by their id
   public Game findGameById(int id) {
 
     Optional<Game> game = gameRepository.findById(id);
@@ -32,6 +33,11 @@ public class GameService {
 
     // otherwise return null
     return null;
+  }
+
+  // retrieve a random list of games 
+  public List<Game> getRandomGames(int count) {
+    return gameRepository.findRandomGames(count);
   }
 
   
