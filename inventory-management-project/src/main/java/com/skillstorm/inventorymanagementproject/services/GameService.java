@@ -17,12 +17,12 @@ public class GameService {
   GameRepository gameRepository;
 
   public List<Game> findAllGames() {
-    Sort sort = Sort.by(Sort.Direction.ASC, "name");    // sorts games in alphabetical order
+    Sort sort = Sort.by(Sort.Direction.ASC, "id");    // sorts games in alphabetical order
     return gameRepository.findAll(sort);     // calls the findAll() in JpaRepository
   }
 
   // retrieve games by their id
-  public Game findGameById(int id) {
+  public Game findGameById(Integer id) {
 
     Optional<Game> game = gameRepository.findById(id);
 

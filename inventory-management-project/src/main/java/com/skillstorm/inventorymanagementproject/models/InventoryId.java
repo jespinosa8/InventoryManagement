@@ -8,5 +8,4 @@ import lombok.Data;
   
   private Integer warehouseId;
   private Integer gameId;
-
 }

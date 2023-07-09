@@ -1,7 +1,7 @@
 // URL's to retrieve data from backend
 const gamesURL = 'http://localhost:8282/games';
 const randomGamesURL = 'http://localhost:8282/games/random?count=3';
-const warehouseURL = 'http://localhost:8282/warehouses';
+const warehousesURL = 'http://localhost:8282/warehouses';
 const topWarehousesURL = 'http://localhost:8282/warehouses/top-warehouses';
 
 let allGames = [];
@@ -16,8 +16,7 @@ function getTopWarehouses() {
   fetch(topWarehousesURL)
     .then((response) => response.json())
     .then((data) => {
-      const topWarehousesElement = document.getElementById('top-warehouses');
-      const capacityElement = document.getElementById('warehouse-capacity');
+      const topWarehousesElement = document.getElementById('top-warehouses');      
 
       // Display the names and capacity in a list format
       const warehouseHTML = data

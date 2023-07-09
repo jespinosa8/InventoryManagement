@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+
 import lombok.*;
 
 
@@ -16,12 +18,15 @@ import lombok.*;
   
   @Id 
   @Column(name = "warehouse_id") 
+  @Min(1)
   private Integer warehouseId;
 
   @Id  
-  @Column(name = "game_id") 
+  @Column(name = "game_id")
+  @Min(1)
   private Integer gameId;
 
   @Column
-  private Integer quantity;
+  @Min(1)
+  private int quantity;
 }

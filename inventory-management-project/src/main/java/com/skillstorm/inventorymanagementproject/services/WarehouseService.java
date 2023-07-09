@@ -24,7 +24,7 @@ public class WarehouseService {
     return warehouseRepository.findAll(sort);     // calls the findAll() in JpaRepository
   }
 
-  public Warehouse findWarehouseById(int id) {
+  public Warehouse findWarehouseById(Integer id) {
 
     Optional<Warehouse> warehouse = warehouseRepository.findById(id);
 
