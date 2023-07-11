@@ -1,12 +1,23 @@
 // URL's to retrieve data from backend
-const gamesURL = 'http://localhost:8282/games';
 const randomGamesURL = 'http://localhost:8282/games/random?count=3';
-const warehousesURL = 'http://localhost:8282/warehouses';
 const topWarehousesURL = 'http://localhost:8282/warehouses/top-warehouses';
 
 let allGames = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  const manageWarehousesButton = document.getElementById('manage-warehouses-btn');
+  manageWarehousesButton.addEventListener('click', () => {
+    // Redirect to the warehouses page
+    window.location.href = 'warehouses.html';
+  });
+
+  const manageGamesButton = document.getElementById('manage-games-btn');
+  manageGamesButton.addEventListener('click', () => {
+    // Redirect to the games page
+    window.location.href = 'games.html';
+  });
+
   getTopWarehouses();
   getRandomGames();
 });

@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventory Manager</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Manager</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+    crossorigin="anonymous"
+  />
 
-    <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 
-    <script src="index.js" defer></script>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <header>
-        <nav>
-          <ul class="nav justify-content-end">           
-            <li class="nav-item">
-              <a class="nav-link" href="/inventory-management-project/src/public/warehouses/warehouses.html">Warehouses</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/inventory-management-project/src/public/games/games.html">Games</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <header>
+      <nav>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="warehouses/warehouses.html">Warehouses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="games/games.html">Games</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-
-      <main>
-        <div class="container">
+    <main>
+      <div class="row row-centered">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="text-center">
+                <h5 class="card-title">Video Games</h5>
+                <div id="random-games-container"></div>
+                <div class="text-center mt-3">
+                  <button class="btn btn-primary" id="manage-games-btn">Manage Games</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
           <div class="row">
-            <div class="col-md-6 offset-md-3">
-              <h2 class="text-center mb-4">Game Vault Inventory Solutions</h2>
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-body">
                   <div class="text-center">
@@ -49,35 +61,23 @@
                 </div>
               </div>
             </div>
-          </div>
-            <div class="col-md-4">
+            <div class="col-md-12 mt-4">
               <div class="card">
                 <div class="card-body">
                   <div class="text-center">
-                    <h5 class="card-title">Video Games</h5>
-                    <div id="random-games-container"></div>
+                    <h5 class="card-title">Total Inventory</h5>
+                    <div id="inventory-container"></div>
                     <div class="text-center mt-3">
-                      <button class="btn btn-primary">Manage Games</button>
+                      <button class="btn btn-primary" id="manage-inventory-btn">Manage Inventory</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="text-center">
-                    <h5 class="card-title">Total Inventory</h5>
-                    <div id="random-games-container"></div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>                      
           </div>
         </div>
-
-      </main>
-    </div>
-  </body>
+      </div>
+    </main>
+  </div>
+</body>
 </html>

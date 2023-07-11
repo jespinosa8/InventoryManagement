@@ -14,42 +14,41 @@
 
 <link rel="stylesheet" href="\inventory-management-project\src\public\styles.css">
 
-<script src="warehouses.js" defer></script>  
+  
 </head>
 <body>
   <div class="container-fluid">
     <header>
       <nav>
         <div class="container-fluid">
-
           <ul class="nav justify-content-end">           
             <li class="nav-item">
               <a class="nav-link" href="/inventory-management-project/src/public/index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/games.html">Games</a>
+              <a class="nav-link" href="../games/games.html">Games</a>
             </li>
           </ul>
         </div>
       </nav>
     </header>
-
-    <body>
-      <h2 class="mt-3">Warehouses</h2>
+    
+      <div class="container">
+        <h1 class="text-center mb-4">Manage Warehouses</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-center">Name</th>
+              <th class="text-center">Location</th>
+              <th class="text-center">Capacity</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="warehouses-table"></tbody>
+        </table>
+      </div>
   
-      <table id="warehouse-table" class="table table-bordered">
-        <thead>
-          <tr>
-            <th class="text-center">Warehouse Name</th>
-            <th class="text-center">Location</th>
-            <th class="text-center">Max Capacity</th>
-            <th class="text-center">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Warehouse data rows inserted here -->
-        </tbody>
-      </table>      
+      <script src="warehouses.js"></script>
     </body>
   </div>
 
