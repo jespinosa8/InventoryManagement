@@ -7,6 +7,28 @@ const topWarehousesURL = 'http://localhost:8282/warehouses/top-warehouses';
 let allGames = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Manage Warehouse Button functionality
+  const manageWarehousesBtn = document.getElementById('manage-warehouses-btn');
+  manageWarehousesBtn.addEventListener('click', () => {
+    
+    window.location.href = 'warehouses/warehouses.html';
+  });
+
+  // Manage Games Button functionality
+  const manageGamesBtn = document.getElementById('manage-games-btn');
+  manageGamesBtn.addEventListener('click', () => {
+    
+    window.location.href = 'games/games.html';
+  });
+
+  // Manage Inventory Button functionality
+  const manageInventoryBtn = document.getElementById('manage-inventory-btn');
+  manageInventoryBtn.addEventListener('click', () => {
+    
+    window.location.href = 'inventory/inventory.html';
+  });
+
   getTopWarehouses();
   getRandomGames();
 });

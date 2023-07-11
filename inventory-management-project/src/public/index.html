@@ -20,12 +20,15 @@
     <div class="container-fluid">
       <header>
         <nav>
-          <ul class="nav justify-content-end">           
+          <ul class="nav justify-content-end"> 
             <li class="nav-item">
-              <a class="nav-link" href="/inventory-management-project/src/public/warehouses/warehouses.html">Warehouses</a>
+              <a class="nav-link" href="inventory/inventory.html">Inventory</a>
+            </li>          
+            <li class="nav-item">
+              <a class="nav-link" href="warehouses/warehouses.html">Warehouses</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/inventory-management-project/src/public/games/games.html">Games</a>
+              <a class="nav-link" href="games/games.html">Games</a>
             </li>
           </ul>
         </nav>
@@ -57,7 +60,7 @@
                     <h5 class="card-title">Video Games</h5>
                     <div id="random-games-container"></div>
                     <div class="text-center mt-3">
-                      <button class="btn btn-primary">Manage Games</button>
+                      <button class="btn btn-primary" id="manage-games-btn">Manage Games</button>
                     </div>
                   </div>
                 </div>
@@ -68,7 +71,9 @@
                 <div class="card-body">
                   <div class="text-center">
                     <h5 class="card-title">Total Inventory</h5>
-                    <div id="random-games-container"></div>
+                    <div class="text-center mt-3">
+                      <button class="btn btn-primary" id="manage-inventory-btn">Manage Inventory</button>
+                    </div>               
                     
                   </div>
                 </div>
