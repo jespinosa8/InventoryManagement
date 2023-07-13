@@ -25,7 +25,7 @@ import com.skillstorm.inventorymanagementproject.services.GameService;
 
 @RestController
 @RequestMapping("/games")
-@CrossOrigin("http://127.0.0.1:3001/")
+@CrossOrigin("http://localhost:5173/")
 public class GameController {
   
   @Autowired
@@ -59,12 +59,23 @@ public class GameController {
     return new ResponseEntity<Game>(newGame, HttpStatus.CREATED);
   }
 
-  @PutMapping("/game")
-  public ResponseEntity<Game> updateMovie(@Valid @RequestBody Game game) {
-
-    Game updatedGame = gameService.saveGame(game);       
-    return new ResponseEntity<Game>(updatedGame, HttpStatus.OK);
-  }
+ @PutMapping("/game/{id}")
+  public ResponseEntity<Game> updateGame(@PathVariable int id, @Valid @RequestBody Game game) {
+    Game existingGame = gameService.findGameById(id);
+    
+    if (existingGame == null) {
+      return ResponseEntity.notFound().build();
+    }
+    
+    // Update the existing game with the new values
+    existingGame.setName(game.getName());
+    existingGame.setDescription(game.getDescription());
+    existingGame.setDeveloper(game.getDeveloper());
+  
+    Game updatedGame = gameService.saveGame(existingGame);
+  
+    return ResponseEntity.ok(updatedGame);
+  } 
 
   @DeleteMapping("/game/{id}") 
     public ResponseEntity<Game> deleteGame(@PathVariable int id) {

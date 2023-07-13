@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import com.skillstorm.inventorymanagementproject.services.InventoryService;
 
 @RestController
 @RequestMapping("/inventory")
+@CrossOrigin("http://localhost:5173/")
 public class InventoryController {
   
   @Autowired
@@ -32,12 +34,7 @@ public class InventoryController {
     return ResponseEntity.ok(inventory);
   }
 
-  @PostMapping("/add-game")
-  // public ResponseEntity<String> addGameToWarehouse(@RequestParam Integer warehouseId, @RequestParam Integer gameId, @RequestParam int desiredQuantity) {
-  //   inventoryService.findByWarehouseIdAndGameId(warehouseId, gameId, desiredQuantity);
-
-  //   return ResponseEntity.status(HttpStatus.CREATED).body("Game(s) added to warehouse successfully!");
-  // }
+  @PostMapping("/add-game")  
   public ResponseEntity<String> addGameToWarehouse(@Valid @RequestBody Map<String, Object> request, BindingResult bindingResult) {
     System.out.println(request);
     // Check for validation errors

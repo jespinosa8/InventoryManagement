@@ -23,7 +23,7 @@ import com.skillstorm.inventorymanagementproject.services.WarehouseService;
 
 @RestController
 @RequestMapping("/warehouses")
-@CrossOrigin("http://127.0.0.1:3001/")
+@CrossOrigin("http://localhost:5173/")
 public class WarehouseController {
 
   @Autowired
@@ -55,11 +55,22 @@ public class WarehouseController {
     return new ResponseEntity<Warehouse>(newWarehouse, HttpStatus.CREATED);
   }
 
-  @PutMapping("/warehouse")
-  public ResponseEntity<Warehouse> updateWarehouse(@RequestBody Warehouse warehouse) {
-    Warehouse updatedWarehouse = warehouseService.saveWarehouse(warehouse);
-
-    return new ResponseEntity<Warehouse>(updatedWarehouse, HttpStatus.OK);
+  @PutMapping("/warehouse/{id}")
+  public ResponseEntity<Warehouse> updateWarehouse(@PathVariable int id, @Valid @RequestBody Warehouse warehouse) {
+    Warehouse existingWarehouse = warehouseService.findWarehouseById(id);
+    
+    if (existingWarehouse == null) {
+      return ResponseEntity.notFound().build();
+    }
+    
+    // Update the existing warehouse with the new values
+    existingWarehouse.setName(warehouse.getName());
+    existingWarehouse.setLocation(warehouse.getLocation());
+    existingWarehouse.setCapacity(warehouse.getCapacity());
+  
+    Warehouse updatedWarehouse = warehouseService.saveWarehouse(existingWarehouse);
+  
+    return ResponseEntity.ok(updatedWarehouse);
   } 
 
   @DeleteMapping("/warehouse/{id}") 
