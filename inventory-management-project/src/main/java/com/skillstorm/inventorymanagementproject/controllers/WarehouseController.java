@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -61,9 +62,13 @@ public class WarehouseController {
     return new ResponseEntity<Warehouse>(updatedWarehouse, HttpStatus.OK);
   } 
 
-  @DeleteMapping("/warehouse") 
-    public ResponseEntity<Warehouse> deleteWarehouse(@RequestBody Warehouse warehouse) {
-      warehouseService.deleteWarehouse(warehouse);
+  @DeleteMapping("/warehouse/{id}") 
+    public ResponseEntity<Warehouse> deleteWarehouse(@PathVariable int id) {
+      try {
+        warehouseService.deleteWarehouseById(id); 
+      } catch (EmptyResultDataAccessException e) {
+        return ResponseEntity.notFound().build();
+      }
 
       return ResponseEntity.noContent().build();
     }

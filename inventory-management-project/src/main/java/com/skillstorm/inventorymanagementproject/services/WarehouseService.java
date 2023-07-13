@@ -50,14 +50,9 @@ public class WarehouseService {
 
   public Warehouse saveWarehouse(Warehouse warehouse) {
     return warehouseRepository.save(warehouse);   // performs an isNew() check using PK
-  }
+  }  
 
-  // public int updateWarehouse(Warehouse warehouse, String newLocation) {
-
-  //   return WarehouseRepository.updateWarehouseLocation(warehouse.getId(), newLocation);
-  // }
-
-  public void deleteWarehouse(Warehouse warehouse) {
-    warehouseRepository.delete(warehouse);
+  public void deleteWarehouseById(int warehouse) {
+    warehouseRepository.deleteById(warehouse);
   }
 }

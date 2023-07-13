@@ -46,8 +46,8 @@ public class GameService {
   }
 
   // method to delete game resource
-  public void deleteGame(Game game) {
-    gameRepository.delete(game);
+  public void deleteGameById(int game) {
+    gameRepository.deleteById(game);
   }
 
 

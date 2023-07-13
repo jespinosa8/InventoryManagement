@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.inventorymanagementproject.models.Game;
+import com.skillstorm.inventorymanagementproject.models.Warehouse;
 import com.skillstorm.inventorymanagementproject.services.GameService;
 
 @RestController
@@ -64,10 +66,15 @@ public class GameController {
     return new ResponseEntity<Game>(updatedGame, HttpStatus.OK);
   }
 
-  @DeleteMapping("/game") 
-    public ResponseEntity<Game> deleteGame(@RequestBody Game game) {
-      gameService.deleteGame(game);
+  @DeleteMapping("/game/{id}") 
+    public ResponseEntity<Game> deleteGame(@PathVariable int id) {
+      try {
+        gameService.deleteGameById(id); 
+      } catch (EmptyResultDataAccessException e) {
+        return ResponseEntity.notFound().build();
+      }
 
       return ResponseEntity.noContent().build();
-    }  
+    }
+  
 }
