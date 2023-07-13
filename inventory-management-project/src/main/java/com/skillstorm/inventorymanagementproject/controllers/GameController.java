@@ -23,7 +23,7 @@ import com.skillstorm.inventorymanagementproject.services.GameService;
 
 @RestController
 @RequestMapping("/games")
-@CrossOrigin("http://127.0.0.1:3001/")
+@CrossOrigin("http://127.0.0.1:5174/")
 public class GameController {
   
   @Autowired

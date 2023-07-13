@@ -22,7 +22,7 @@ import com.skillstorm.inventorymanagementproject.services.WarehouseService;
 
 @RestController
 @RequestMapping("/warehouses")
-@CrossOrigin("http://127.0.0.1:3001/")
+@CrossOrigin("http://127.0.0.1:5174/")
 public class WarehouseController {
 
   @Autowired
