@@ -6,17 +6,67 @@ export default function WarehousesTable({ tableData }) {
   const URL = 'http://localhost:8282/warehouses';
 
   const [warehouses, setWarehouses] = useState([]);
-  // const [editWarehouseId, setEditWarehouseId] = useState(null);
+  const [editWarehouseId, setEditWarehouseId] = useState(null);
   const [deleteConfirmationId, setDeleteConfirmationId] = useState(null);
+  const [editWarehouseData, setEditWarehouseData] = useState({
+    name: "",
+    location: "",
+    capacity: ""
+  });
 
-  // creating our modal
-  // const modalRef = useRef(null);
+  
 
   // HANDLE FOR UPDATING WAREHOUSE
-  // const handleEdit = (event, warehouseId) => {
-  //   event.preventDefault();
-  //   setEditWarehouseId(warehouseId);
-  // };
+  const handleEdit = (event, warehouse) => {
+    event.preventDefault();
+    setEditWarehouseId(warehouse.id);
+    setEditWarehouseData({
+      name: warehouse.name,
+      location: warehouse.location,
+      capacity: warehouse.capacity
+    });
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setEditWarehouseData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleUpdateWarehouse = (event, warehouseId) => {
+    event.preventDefault();
+    fetch(`${URL}/warehouse/${warehouseId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(editWarehouseData)
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Warehouse updated successfully');
+          // Update the warehouse data in the state
+          const updatedWarehouses = warehouses.map((warehouse) => {
+            if (warehouse.id === warehouseId) {
+              return {
+                ...warehouse,
+                ...editWarehouseData
+              };
+            }
+            return warehouse;
+          });
+          setWarehouses(updatedWarehouses);
+          setEditWarehouseId(null);
+        } else {
+          console.error('Failed to update warehouse');
+        }
+      })
+      .catch((error) => {
+        console.error('Error occurred during warehouse update:', error);
+      });
+  };
 
   // HANDLE FOR DELETING WAREHOUSE
   const handleDelete = (warehouseId) => {
