@@ -6,11 +6,14 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +24,7 @@ import com.skillstorm.inventorymanagementproject.services.InventoryService;
 
 @RestController
 @RequestMapping("/inventory")
-@CrossOrigin("http://localhost:5173/")
+@CrossOrigin("*")
 public class InventoryController {
   
   @Autowired
@@ -43,8 +46,8 @@ public class InventoryController {
     }
     
     // Extract the values from the request map
-    Integer warehouseId = Integer.valueOf(request.get("warehouseId").toString());
-    Integer gameId = Integer.valueOf(request.get("gameId").toString());
+    int warehouseId = Integer.valueOf(request.get("warehouseId").toString());
+    int gameId = Integer.valueOf(request.get("gameId").toString());
     int desiredQuantity = Integer.parseInt(request.get("desiredQuantity").toString());
     
     // Process the add game operation
@@ -52,5 +55,17 @@ public class InventoryController {
 
     // Return the appropriate response
     return ResponseEntity.status(HttpStatus.CREATED).body("Games added to warehouse successfully.");
+  }
+
+  @DeleteMapping("/{warehouseId}/{gameId}")
+  public ResponseEntity<Integer> deleteInventory(@PathVariable int gameId, @PathVariable int warehouseId) {
+    try {
+         inventoryService.deleteInventory(warehouseId, gameId); 
+      } catch (EmptyResultDataAccessException e) {
+        return ResponseEntity.notFound().build();
+      }
+
+      return ResponseEntity.noContent().build();
+  }       
 }
-}
+

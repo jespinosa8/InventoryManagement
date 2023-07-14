@@ -20,12 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.inventorymanagementproject.models.Game;
-import com.skillstorm.inventorymanagementproject.models.Warehouse;
 import com.skillstorm.inventorymanagementproject.services.GameService;
 
 @RestController
 @RequestMapping("/games")
-@CrossOrigin("http://localhost:5173/")
+@CrossOrigin("*")
 public class GameController {
   
   @Autowired

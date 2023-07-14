@@ -19,7 +19,7 @@ import lombok.*;
   @Id
   @Column
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
 
   @Column(name = "name")
   @NotBlank
@@ -31,6 +31,6 @@ import lombok.*;
 
   @Column(name = "max_capacity")
   @Min(1)
-  private Integer capacity;   
+  private int capacity;   
   
 }

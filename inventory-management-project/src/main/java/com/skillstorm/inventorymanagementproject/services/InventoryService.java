@@ -28,7 +28,7 @@ public class InventoryService {
     return inventoryRepository.findAll();       // retrieves everything in inventory table in db
   }
 
-  public void findByWarehouseIdAndGameId(Integer warehouseId, Integer gameId, int desiredQuantity) {
+  public void findByWarehouseIdAndGameId(int warehouseId, int gameId, int desiredQuantity) {
     // Get the Warehouse and Game based on their IDs
     Warehouse warehouse = warehouseRepository.findById(warehouseId).orElse(null);
     Game game = gameRepository.findById(gameId).orElse(null);
@@ -53,7 +53,35 @@ public class InventoryService {
       // Save the Inventory record
       inventoryRepository.save(inventory); 
     }
-  }
 
+  }
+  
+  // Delete an Inventory Record
+  public void deleteInventory(int warehouseId, int gameId) {
+      // Get the Warehouse and Game based on their IDs
+    Warehouse warehouse = warehouseRepository.findById(warehouseId).orElse(null);
+    Game game = gameRepository.findById(gameId).orElse(null);
+
+    // Check if the Warehouses and Games exist
+    if(warehouse != null && game != null) {
+      // Check if the Inventory record already exists for the Warehouse and Game combination
+      Inventory inventory = inventoryRepository.findByWarehouseIdAndGameId(warehouseId, gameId);
+
+      if(inventory != null) {
+        // If the Inventory record exists, grab the quantity
+        int quantity = inventory.getQuantity();
+        
+        // Subtract quantity from warehouse capacity
+        int currentCapacity = warehouse.getCapacity();
+        int newCapacity = currentCapacity + quantity;
+
+        // Update warehouse capacity
+        warehouse.setCapacity(newCapacity);
+      }
+      //Delete the inventory record
+      inventoryRepository.delete(inventory);
+    }                
+
+  }
   
 }

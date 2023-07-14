@@ -6,6 +6,6 @@ import lombok.Data;
 
 @Data public class InventoryId implements Serializable {
   
-  private Integer warehouseId;
-  private Integer gameId;
+  private int warehouseId;
+  private int gameId;
 }

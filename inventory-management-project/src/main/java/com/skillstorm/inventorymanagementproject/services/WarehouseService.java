@@ -46,9 +46,10 @@ public class WarehouseService {
             .limit(3)
             .collect(Collectors.toList());
     return topWarehouses;
-  }
+  }  
+  
 
-  public Warehouse saveWarehouse(Warehouse warehouse) {
+  public Warehouse updateOrCreateWarehouse(Warehouse warehouse) {
     return warehouseRepository.save(warehouse);   // performs an isNew() check using PK
   }  
 

@@ -3,7 +3,7 @@ import { Button, Form, Label, TextInput } from "@trussworks/react-uswds";
 
 export default function WarehousesForm({handleNewWarehouse}) {
 
-  const url = 'http://localhost:8282/warehouse';
+  const url = 'http://localhost:8282/warehouses';
 
   function handleSubmit(event) {
     

@@ -17,14 +17,14 @@ import lombok.*;
 @Data public class Inventory { 
   
   @Id 
-  @Column(name = "warehouse_id") 
+  @Column(name = "warehouseId") 
   @Min(1)
-  private Integer warehouseId;
+  private int warehouseId;
 
   @Id  
-  @Column(name = "game_id")
+  @Column(name = "gameId")
   @Min(1)
-  private Integer gameId;
+  private int gameId;
 
   @Column
   @Min(1)

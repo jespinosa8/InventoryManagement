@@ -1,6 +1,7 @@
-import { Grid } from "@trussworks/react-uswds";
-import { useEffect, useState } from "react";
-import GamesTable from "../components/GamesTable";
+import { Grid, GridContainer, Modal, ModalHeading, ModalToggleButton } from "@trussworks/react-uswds";
+import { useEffect, useRef, useState } from "react";
+import GamesTable from "../src/components/games/GamesTable";
+import GamesForm from "../src/components/games/GamesForm";
 
 
 export default function Games () {
@@ -8,6 +9,9 @@ export default function Games () {
   const url = 'http://localhost:8282/games';
 
   const [games, setGames] = useState([]);
+
+  // creating our modal
+  const modalRef = useRef(null);
 
   // make this GET request when the component is mounted to dom
   useEffect(() => {
@@ -21,14 +25,23 @@ export default function Games () {
       .catch((error) => console.error(error));
   }, []); // need to add empty dependency list so it runs on mount only
 
+  function handleNewGame(newGame) {
+    setGames((oldState) => {
+      return [...oldState, newGame];
+    });
+  }
+
   return (
     <>
-      <Grid row>
-          <Grid col>
+      <GridContainer>
+        <Grid row>
+          <Grid col={10}>
             <h1 className="text-centered">All Games</h1>
           </Grid>
-          <Grid col>            
-              New Warehouse            
+          <Grid col={4}>
+            <ModalToggleButton modalRef={modalRef} opener>
+              Add New Game
+            </ModalToggleButton>
           </Grid>
         </Grid>
         <Grid row>
@@ -36,6 +49,15 @@ export default function Games () {
             <GamesTable tableData={games}></GamesTable>
           </Grid>
         </Grid>
+      </GridContainer>
+
+      <Modal id="game-form-modal" ref={modalRef}>
+        <ModalHeading>Enter New Game Details</ModalHeading>
+
+        <GamesForm
+          handleNewGame={handleNewGame}
+        ></GamesForm>
+      </Modal>
     </>
   )
 }

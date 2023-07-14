@@ -8,5 +8,5 @@ import com.skillstorm.inventorymanagementproject.models.Inventory;
 
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
-  Inventory findByWarehouseIdAndGameId(Integer warehouseId, Integer gameId);
+  Inventory findByWarehouseIdAndGameId(int warehouseId, int gameId);
 }

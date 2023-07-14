@@ -18,7 +18,7 @@ import lombok.*;
   @Id
   @Column
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private int id;
 
   @Column(name = "name")
   @NotBlank 

@@ -6,19 +6,19 @@ import {
   ModalHeading,
   ModalToggleButton,
 } from '@trussworks/react-uswds';
-import WarehousesTable from '../src/components/warehouse/WarehousesTable';
+import InventoryTable from '../src/components/inventory/InventoryTable';
 import { useState, useEffect, useRef } from 'react';
-import WarehousesForm from '../src/components/warehouse/WarehousesForm';
+import InventoryForm from '../src/components/inventory/InventoryForm';
 
-export default function Warehouses() {
-  const url = 'http://localhost:8282/warehouses';
+export default function Inventory() {
+  const url = 'http://localhost:8282/inventory';
 
-  // state for our list of warehouses
-  const [warehouses, setWarehouses] = useState([]);
+  // state for our list of inventory
+  const [inventory, setInventory] = useState([]);
 
   // creating our modal
   const modalRef = useRef(null);
-  
+
   // make this GET request when the component is mounted to dom
   useEffect(() => {
     
@@ -27,14 +27,14 @@ export default function Warehouses() {
       .then((data) => data.json())
       .then((returnedData) => {
         console.log(returnedData);
-        setWarehouses(returnedData);
+        setInventory(returnedData);
       })
       .catch((error) => console.error(error));
   }, []); // need to add empty dependency list so it runs on mount only
 
-  function handleNewWarehouse(newWarehouse) {
-    setWarehouses((oldState) => {
-      return [...oldState, newWarehouse];
+  function handleNewInventory(newInventory) {
+    setInventory((oldState) => {
+      return [...oldState, newInventory];
     });
   }
 
@@ -43,31 +43,28 @@ export default function Warehouses() {
       <GridContainer>
         <Grid row>
           <Grid col={10}>
-            <h1 className="text-centered">All Warehouses</h1>
+            <h1 className="text-centered">All Inventory</h1>
           </Grid>
           <Grid col={4}>
             <ModalToggleButton modalRef={modalRef} opener>
-              Add New Warehouse
+              Add New Inventory
             </ModalToggleButton>
-          </Grid>          
+          </Grid>
         </Grid>
         <Grid row>
           <Grid col>
-            <WarehousesTable tableData={warehouses}></WarehousesTable>
+            <InventoryTable tableData={inventory}></InventoryTable>
           </Grid>
         </Grid>
       </GridContainer>
 
-      {/* Add Warehouse Modal */} 
-      <Modal id="warehouse-form-modal" ref={modalRef}>
-        <ModalHeading>Enter New Warehouse Details</ModalHeading>
+      <Modal id="inventory-form-modal" ref={modalRef}>
+        <ModalHeading>Enter New Inventory Details</ModalHeading>
 
-        <WarehousesForm
-          handleNewWarehouse={handleNewWarehouse}
-        ></WarehousesForm>
-      </Modal>    
-
-      
+        <InventoryForm
+          handleNewInventory={handleNewInventory}
+        ></InventoryForm>
+      </Modal>
     </>
   );
 }

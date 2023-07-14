@@ -1,10 +1,11 @@
+import Dashboard from "../src/components/Dashboard";
 
 
 export default function Home() {
 
   return (
-    <>
-      <h1>Home Page</h1>
+    <>      
+      <Dashboard/>
     </>
   );
 }
