@@ -81,8 +81,7 @@ export default function InventoryTable({ tableData }) {
           <tr>
             <th>Warehouse ID</th>
             <th>Game ID</th>
-            <th>Quantity</th>
-            <th>Actions</th>
+            <th>Quantity</th>            
           </tr>
         </thead>
         <tbody>

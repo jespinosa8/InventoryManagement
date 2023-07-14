@@ -1,0 +1,53 @@
+{
+  "hash": "50bccf25",
+  "browserHash": "be864aac",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "bb613a9a",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "b254a2dd",
+      "needsInterop": true
+    },
+    "react-bootstrap/Container": {
+      "src": "../../node_modules/react-bootstrap/esm/Container.js",
+      "file": "react-bootstrap_Container.js",
+      "fileHash": "e0be5255",
+      "needsInterop": false
+    },
+    "react-bootstrap/Navbar": {
+      "src": "../../node_modules/react-bootstrap/esm/Navbar.js",
+      "file": "react-bootstrap_Navbar.js",
+      "fileHash": "0e555d42",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "99f31844",
+      "needsInterop": false
+    },
+    "@trussworks/react-uswds": {
+      "src": "../../node_modules/@trussworks/react-uswds/lib/index.js",
+      "file": "@trussworks_react-uswds.js",
+      "fileHash": "eddbbd29",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-5TJBTG4O": {
+      "file": "chunk-5TJBTG4O.js"
+    },
+    "chunk-LSPXQOWH": {
+      "file": "chunk-LSPXQOWH.js"
+    },
+    "chunk-PEQH77RF": {
+      "file": "chunk-PEQH77RF.js"
+    }
+  }
+}

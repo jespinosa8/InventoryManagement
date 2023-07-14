@@ -27,47 +27,6 @@ export default function WarehousesTable({ tableData }) {
     });
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setEditWarehouseData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-  const handleUpdateWarehouse = (event, warehouseId) => {
-    event.preventDefault();
-    fetch(`${URL}/warehouse/${warehouseId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(editWarehouseData)
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log('Warehouse updated successfully');
-          // Update the warehouse data in the state
-          const updatedWarehouses = warehouses.map((warehouse) => {
-            if (warehouse.id === warehouseId) {
-              return {
-                ...warehouse,
-                ...editWarehouseData
-              };
-            }
-            return warehouse;
-          });
-          setWarehouses(updatedWarehouses);
-          setEditWarehouseId(null);
-        } else {
-          console.error('Failed to update warehouse');
-        }
-      })
-      .catch((error) => {
-        console.error('Error occurred during warehouse update:', error);
-      });
-  };
-
   // HANDLE FOR DELETING WAREHOUSE
   const handleDelete = (warehouseId) => {
     setDeleteConfirmationId(warehouseId);
@@ -136,8 +95,7 @@ export default function WarehousesTable({ tableData }) {
             <tr>
               <th>Name</th>
               <th>Location</th>
-              <th>Capacity</th>
-              <th>Actions</th>
+              <th>Capacity</th>              
             </tr>
           </thead>
           <tbody>
@@ -172,6 +130,10 @@ export default function WarehousesTable({ tableData }) {
             font-size: 14px;
             padding: 5px 10px;
             margin-bottom: 15px;
+          }
+
+          .action-header {
+            text-align: center;
           }
         `}
         </style>

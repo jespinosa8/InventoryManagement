@@ -83,8 +83,7 @@ export default function GamesTable({ tableData }) {
             <tr>
               <th>Name</th>
               <th>Description</th>
-              <th>Developer</th>
-              <th>Actions</th>
+              <th>Developer</th>              
             </tr>
           </thead>
           <tbody>
